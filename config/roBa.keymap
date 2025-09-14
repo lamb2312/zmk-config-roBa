@@ -174,7 +174,7 @@
 &kp LCTRL       &kp LEFT_GUI  &trans  &kp R      &mo 8      &kp SPACE         &trans  &trans                          &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
+            sensor-bindings = <&inc_dec_kp N8 N7>;
         };
 
         layer_8 {
@@ -196,7 +196,7 @@
 &trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                          &trans
             >;
 
-            sensor-bindings = <&inc_dec_kp 0 0>;
+            sensor-bindings = <&inc_dec_kp N4 N5>;
         };
     };
 };
