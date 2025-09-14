@@ -169,7 +169,7 @@
         layer_7 {
             bindings = <
 &kp LC(C)       &kp LC(V)     &trans  &kp LC(Z)  &kp LC(Y)                            &trans  &trans  &trans  &trans  &trans
-&lt 9 G         &kp M         &kp B   &kp E      &kp P      &kp Q             &trans  &trans  &trans  &trans  &trans  &trans
+&lt 9 G         &kp M         &kp B   &kp E      &lt 9 P    &kp Q             &trans  &trans  &trans  &trans  &trans  &trans
 &kp LEFT_SHIFT  &kp I         &kp K   &kp X      &kp C      &kp LEFT_ALT      &trans  &trans  &trans  &trans  &trans  &trans
 &kp LCTRL       &kp LEFT_GUI  &kp W   &kp R      &mo 8      &kp SPACE         &trans  &trans                          &trans
             >;
