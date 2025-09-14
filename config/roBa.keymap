@@ -72,7 +72,7 @@
 
         illust {
             bindings = <&to 7>;
-            key-positions = <1 2 3 4>;
+            key-positions = <37 38 39>;
         };
     };
 
@@ -168,10 +168,10 @@
 
         layer_7 {
             bindings = <
-&kp LC(C)       &kp LC(V)     &trans  &kp LC(Z)  &kp LC(Y)                            &trans  &trans  &trans  &trans  &trans
-&lt 9 G         &kp M         &kp B   &kp E      &lt 9 P    &kp Q             &trans  &trans  &trans  &trans  &trans  &trans
-&kp LEFT_SHIFT  &kp I         &kp K   &kp X      &kp C      &kp LEFT_ALT      &trans  &trans  &trans  &trans  &trans  &trans
-&kp LCTRL       &kp LEFT_GUI  &kp W   &kp R      &mo 8      &kp SPACE         &trans  &trans                          &trans
+&kp LC(C)       &kp LC(V)     &none  &kp LC(Z)  &kp LC(Y)                            &trans  &trans  &trans  &trans  &trans
+&lt 9 G         &kp M         &kp B  &kp E      &lt 9 P    &kp Q             &trans  &trans  &trans  &trans  &trans  &trans
+&kp LEFT_SHIFT  &kp I         &kp K  &kp X      &kp C      &kp LEFT_ALT      &trans  &trans  &trans  &trans  &trans  &trans
+&kp LCTRL       &kp LEFT_GUI  &kp W  &kp R      &mo 8      &kp SPACE         &trans  &trans                          &trans
             >;
 
             sensor-bindings = <&inc_dec_kp N8 N7>;
