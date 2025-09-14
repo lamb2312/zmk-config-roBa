@@ -59,6 +59,11 @@
             bindings = <&mkp MB5>;
             key-positions = <6 7 8>;
         };
+
+        to0 {
+            bindings = <&to 0>;
+            key-positions = <37 39>;
+        };
     };
 
     macros {
@@ -89,7 +94,7 @@
 &kp Q          &kp W                      &kp E          &kp R                        &kp T                                                          &kp Y        &kp U  &lt 5 I    &kp O    &kp P
 &kp A          &kp S                      &kp D          &kp F                        &kp G        &kp LS(LG(S))                      &kp MINUS      &kp H        &kp J  &kp K      &kp L    &kp ENTER
 &kp Z          &kp X                      &kp C          &kp V                        &kp B        &kp LEFT_ALT                       &kp B          &kp N        &kp M  &kp COMMA  &kp DOT  &kp DELETE
-&mt LCTRL TAB  &lt_to_layer_0 6 LEFT_GUI  &kp LA(TILDE)  &lt_to_layer_0 1 INT_HENKAN  &lt 2 SPACE  &lt_to_layer_0 3 INT_MUHENKAN      &kp BACKSPACE  &lt 1 SPACE                             &to 3
+&mt LCTRL TAB  &lt_to_layer_0 6 LEFT_GUI  &kp LA(GRAVE)  &lt_to_layer_0 1 INT_HENKAN  &lt 2 SPACE  &lt_to_layer_0 3 INT_MUHENKAN      &kp BACKSPACE  &lt 1 SPACE                             &to 3
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -107,7 +112,7 @@
         kigou {
             bindings = <
 &kp HASH     &trans     &kp UP_ARROW    &trans           &trans                                             &kp EQUAL     &kp EXCLAMATION    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN
-&kp DOLLAR   &kp LEFT   &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans     &kp LC(LA(KP_NUMBER_0))      &kp MINUS  &kp SLASH     &kp QUESTION       &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &trans
+&kp DOLLAR   &kp LEFT   &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans     &kp LC(LA(KP_NUMBER_0))      &kp MINUS  &kp SLASH     &kp QUESTION       &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp ENTER
 &kp PERCENT  &kp COLON  &kp SEMICOLON   &kp PIPE         &kp TILDE  &kp AMPERSAND                &kp PLUS   &kp ASTERISK  &kp RIGHT_BRACKET  &kp COMMA             &kp PERIOD             &kp BACKSLASH
 &trans       &trans     &trans          &trans           &trans     &trans                       &trans     &trans                                                                        &kp PIPE
             >;
@@ -115,10 +120,10 @@
 
         mouse {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &mkp MB5  &kp F5     &trans     &kp LS(LC(T))  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &mkp MB4  &mkp MB1   &mkp MB3   &mkp MB2       &mo 5
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans    &kp LC(C)  &kp LC(V)  &trans         &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                         &trans
+&trans  &trans  &trans  &trans  &trans                      &mkp MB5             &kp F5     &trans     &kp LS(LC(T))  &to 0
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &mkp MB4             &mkp MB1   &mkp MB3   &mkp MB2       &mo 5
+&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans               &kp LC(C)  &kp LC(V)  &trans         &kp ENTER
+&trans  &trans  &trans  &trans  &trans  &trans      &to 1   &mt LS(LG(S)) SPACE                                       &kp ESCAPE
             >;
 
             sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
