@@ -112,19 +112,19 @@
 
         FUNCTIONnumber {
             bindings = <
-&kp F9  &kp F10  &kp F11  &kp F12  &trans                              &kp BACKSPACE    &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp MINUS
-&kp F5  &kp F6   &kp F7   &kp F8   &trans  &trans      &kp SLASH       &kp PERIOD       &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp PLUS
-&kp F1  &kp F2   &kp F3   &kp F4   &trans  &trans      &kp ASTERISK    &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp ENTER
-&trans  &trans   &trans   &trans   &trans  &trans      &kp LEFT_ARROW  &kp RIGHT_ARROW                                                     &trans
+&kp F9  &kp F10  &kp F11  &kp F12  &trans                               &kp BACKSPACE    &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp KP_SUBTRACT
+&kp F5  &kp F6   &kp F7   &kp F8   &trans  &trans      &kp KP_SLASH     &kp KP_DOT       &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp KP_PLUS
+&kp F1  &kp F2   &kp F3   &kp F4   &trans  &trans      &kp KP_ASTERISK  &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp ENTER
+&trans  &trans   &trans   &trans   &trans  &trans      &kp LEFT_ARROW   &kp RIGHT_ARROW                                                     &trans
             >;
         };
 
         kigou {
             bindings = <
-&kp HASH     &trans     &kp UP_ARROW    &trans           &trans                                             &kp EQUAL     &kp EXCLAMATION    &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN
-&kp DOLLAR   &kp LEFT   &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans     &kp LC(LA(KP_NUMBER_0))      &kp MINUS  &kp SLASH     &kp QUESTION       &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp ENTER
-&kp PERCENT  &kp COLON  &kp SEMICOLON   &kp PIPE         &kp TILDE  &kp AMPERSAND                &kp PLUS   &kp ASTERISK  &kp RIGHT_BRACKET  &kp COMMA             &kp PERIOD             &kp BACKSLASH
-&trans       &trans     &trans          &trans           &trans     &trans                       &trans     &trans                                                                        &kp PIPE
+&kp HASH     &trans     &kp UP_ARROW    &trans           &trans                                             &kp EQUAL     &kp EXCLAMATION  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN
+&kp DOLLAR   &kp LEFT   &kp DOWN_ARROW  &kp RIGHT_ARROW  &trans     &kp LC(LA(KP_NUMBER_0))      &kp MINUS  &kp SLASH     &kp QUESTION     &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp ENTER
+&kp PERCENT  &kp COLON  &kp SEMICOLON   &kp PIPE         &kp TILDE  &kp AMPERSAND                &kp PLUS   &kp ASTERISK  &kp HASH         &kp COMMA             &kp PERIOD             &kp BACKSLASH
+&trans       &trans     &trans          &trans           &trans     &trans                       &trans     &trans                                                                      &kp PIPE
             >;
         };
 
