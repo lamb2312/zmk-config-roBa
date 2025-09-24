@@ -103,7 +103,7 @@
             bindings = <
 &mt LEFT_ALT Q  &kp W         &kp E           &kp R                       &kp T                                                          &kp Y        &kp U  &lt 5 I    &kp O    &kp P
 &kp A           &kp S         &kp D           &kp F                       &kp G        &kp LS(LG(S))                      &kp MINUS      &kp H        &kp J  &kp K      &kp L    &kp ENTER
-&kp Z           &kp X         &kp C           &kp V                       &lt 6 B      &kp DELETE                         &lt 6 B        &kp N        &kp M  &kp COMMA  &kp DOT  &kp RIGHT_ALT
+&kp Z           &kp X         &kp C           &kp V                       &kp B        &kp DELETE                         &lt 6 B        &kp N        &kp M  &kp COMMA  &kp DOT  &kp MINUS
 &mt LCTRL TAB   &kp LEFT_GUI  &kp LEFT_SHIFT  &lt_to_layer_0 1 LC(SPACE)  &lt 2 SPACE  &lt_to_layer_0 3 INT_MUHENKAN      &kp BACKSPACE  &lt 1 SPACE                             &to 3
             >;
 
@@ -112,10 +112,10 @@
 
         FUNCTIONnumber {
             bindings = <
-&kp F9  &kp F10  &kp F11  &kp F12  &trans                              &kp NUMBER_7     &kp NUMBER_8  &kp NUMBER_9  &kp MINUS  &kp SLASH
-&kp F5  &kp F6   &kp F7   &kp F8   &trans  &trans      &kp PERIOD      &kp NUMBER_4     &kp N5        &kp NUMBER_6  &kp PLUS   &kp ASTERISK
-&kp F1  &kp F2   &kp F3   &kp F4   &trans  &trans      &kp NUMBER_0    &kp NUMBER_1     &kp NUMBER_2  &kp NUMBER_3  &kp ENTER  &kp BACKSPACE
-&trans  &trans   &trans   &trans   &trans  &trans      &kp LEFT_ARROW  &kp RIGHT_ARROW                                         &trans
+&kp F9  &kp F10  &kp F11  &kp F12  &trans                              &kp BACKSPACE    &kp KP_NUMBER_7  &kp KP_NUMBER_8  &kp KP_NUMBER_9  &kp MINUS
+&kp F5  &kp F6   &kp F7   &kp F8   &trans  &trans      &kp SLASH       &kp PERIOD       &kp KP_NUMBER_4  &kp KP_NUMBER_5  &kp KP_NUMBER_6  &kp PLUS
+&kp F1  &kp F2   &kp F3   &kp F4   &trans  &trans      &kp ASTERISK    &kp KP_NUMBER_0  &kp KP_NUMBER_1  &kp KP_NUMBER_2  &kp KP_NUMBER_3  &kp ENTER
+&trans  &trans   &trans   &trans   &trans  &trans      &kp LEFT_ARROW  &kp RIGHT_ARROW                                                     &trans
             >;
         };
 
