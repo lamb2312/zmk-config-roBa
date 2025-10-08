@@ -104,7 +104,7 @@
 &mt LEFT_ALT Q  &kp W         &kp E           &kp R                       &kp T                                                          &kp Y        &kp U  &lt 5 I    &kp O    &kp P
 &kp A           &kp S         &kp D           &kp F                       &kp G        &kp LS(LG(S))                      &kp MINUS      &kp H        &kp J  &kp K      &kp L    &kp ENTER
 &kp Z           &kp X         &kp C           &kp V                       &kp B        &kp DELETE                         &lt 6 B        &kp N        &kp M  &kp COMMA  &kp DOT  &kp MINUS
-&mt LCTRL TAB   &kp LEFT_GUI  &kp LEFT_SHIFT  &lt_to_layer_0 1 LC(SPACE)  &lt 2 SPACE  &lt_to_layer_0 3 INT_MUHENKAN      &kp BACKSPACE  &lt 1 SPACE                             &to 3
+&mt LCTRL TAB   &kp LEFT_GUI  &kp LEFT_SHIFT  &lt_to_layer_0 1 LC(SPACE)  &lt 2 SPACE  &lt_to_layer_0 4 INT_MUHENKAN      &kp BACKSPACE  &lt 1 SPACE                             &to 4
             >;
 
             sensor-bindings = <&inc_dec_kp PG_UP PAGE_DOWN>;
@@ -141,11 +141,13 @@
 
         MOUSE {
             bindings = <
-&trans  &trans  &trans  &trans  &trans                      &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &mkp MB1  &mkp MB3  &mkp MB2  &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans  &trans    &trans    &trans    &trans
-&trans  &trans  &trans  &trans  &trans  &trans      &trans  &trans                                &trans
+&kp LC(C)         &kp LC(V)     &trans  &kp LC(Z)  &kp LC(Y)                                   &mkp MB5             &kp F5     &trans     &kp LS(LC(T))  &to 0
+&kp G             &kp M         &kp B   &kp E      &kp P      &trans            &trans         &mkp MB4             &mkp MB1   &mkp MB3   &mkp MB2       &mo 5
+&kp LEFT_SHIFT    &kp I         &kp K   &kp X      &kp C      &kp LEFT_ALT      &to 1          &trans               &kp LC(C)  &kp LC(V)  &trans         &kp ENTER
+&kp LEFT_CONTROL  &kp LEFT_GUI  &kp W   &kp R      &kp Q      &kp SPACE         &kp BACKSPACE  &mt LS(LG(S)) SPACE                                       &kp ESCAPE
             >;
+
+            sensor-bindings = <&inc_dec_kp N8 N7>;
         };
 
         SCROLL {
