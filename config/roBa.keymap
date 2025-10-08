@@ -130,10 +130,10 @@
 
         mouse {
             bindings = <
-&kp LC(C)         &kp LC(V)     &kp LC(S)  &kp LC(Z)  &kp LC(Y)                                   &mkp MB5             &kp F5     &trans     &kp LS(LC(T))  &to 0
-&kp G             &kp M         &kp B      &kp E      &kp P      &kp Q             &trans         &mkp MB4             &mkp MB1   &mkp MB3   &mkp MB2       &mo 5
-&kp LEFT_SHIFT    &kp I         &kp K      &kp X      &kp C      &kp LEFT_ALT      &to 1          &trans               &kp LC(C)  &kp LC(V)  &trans         &kp ENTER
-&kp LEFT_CONTROL  &kp LEFT_GUI  &kp W      &kp R      &kp Q      &kp SPACE         &kp BACKSPACE  &mt LS(LG(S)) SPACE                                       &kp ESCAPE
+&kp LC(C)         &kp LC(V)     &kp LC(S)       &kp LC(Z)  &kp LC(Y)                                   &mkp MB5             &kp F5     &trans     &kp LS(LC(T))  &to 0
+&kp G             &kp M         &kp B           &kp E      &kp P      &kp Q             &trans         &mkp MB4             &mkp MB1   &mkp MB3   &mkp MB2       &mo 5
+&kp W             &kp I         &kp K           &kp X      &kp C      &kp LEFT_ALT      &to 1          &trans               &kp LC(C)  &kp LC(V)  &trans         &kp ENTER
+&kp LEFT_CONTROL  &kp LEFT_GUI  &kp LEFT_SHIFT  &kp R      &kp Q      &kp SPACE         &kp BACKSPACE  &mt LS(LG(S)) SPACE                                       &kp ESCAPE
             >;
 
             sensor-bindings = <&inc_dec_kp N8 N7>;
