@@ -101,7 +101,7 @@
 &mt LCTRL TAB   &kp LEFT_WIN  &kp LEFT_SHIFT  &lt_to_layer_0 1 LC(SPACE)  &mo 2  &mo 3              &kp BACKSPACE  &lt 1 SPACE                             &to 3
             >;
 
-            sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
+            sensor-bindings = <&scroll_up_down>;
         };
 
         FUNCTIONnumber {
@@ -130,7 +130,7 @@
 &trans     &trans     &trans     &kp R      &kp Q      &kp SPACE         &kp BACKSPACE  &mt LS(LG(S)) SPACE                                       &kp ESCAPE
             >;
 
-            sensor-bindings = <&inc_dec_kp K_SCROLL_UP K_SCROLL_DOWN>;
+            sensor-bindings = <&scroll_up_down>;
         };
 
         MOUSE {
