@@ -122,7 +122,7 @@
             >;
         };
 
-        mouse {
+        Mouse {
             bindings = <
 &kp LC(C)  &kp LC(V)  &kp LC(S)  &kp LC(Z)  &kp LC(Y)                                   &mkp MB5             &kp F5     &trans     &kp LS(LC(T))  &to 0
 &kp G      &kp M      &kp B      &kp E      &kp P      &kp Q             &trans         &mkp MB4             &mkp MB1   &mkp MB3   &mkp MB2       &mo 5
