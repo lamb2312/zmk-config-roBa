@@ -29,29 +29,44 @@
     combos {
         compatible = "zmk,combos";
 
-        tab {
-            bindings = <&kp TAB>;
-            key-positions = <11 12>;
+        esc {
+            bindings = <&kp ESCAPE>;
+            key-positions = <0 1>;
         };
 
-        shift_tab {
-            bindings = <&kp LS(TAB)>;
-            key-positions = <12 13>;
+        mouse1 {
+            bindings = <&mkp MB1>;
+            key-positions = <18 19>;
         };
 
-        muhennkann {
-            bindings = <&to_layer_0 INT_MUHENKAN>;
-            key-positions = <11 10>;
+        mouse2 {
+            bindings = <&mkp MB2>;
+            key-positions = <19 20>;
         };
 
-        double_quotation {
-            bindings = <&kp DOUBLE_QUOTES>;
+        mouse3 {
+            bindings = <&mkp MB3>;
+            key-positions = <18 19 20>;
+        };
+
+        mouse4 {
+            bindings = <&mkp MB4>;
+            key-positions = <5 7 6>;
+        };
+
+        mouse5 {
+            bindings = <&mkp MB5>;
+            key-positions = <6 7 8>;
+        };
+
+        to0 {
+            bindings = <&to 0>;
+            key-positions = <37 39>;
+        };
+
+        scroll {
+            bindings = <&mo 5>;
             key-positions = <20 21>;
-        };
-
-        eq {
-            bindings = <&kp EQUAL>;
-            key-positions = <24 25>;
         };
     };
 
