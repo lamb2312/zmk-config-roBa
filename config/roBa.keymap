@@ -113,7 +113,7 @@
             >;
         };
 
-        NUM {
+        kigou {
             bindings = <
 &kp HASH     &trans          &kp UP_ARROW   &trans     &kp LEFT_ALT                                          &kp EQUAL     &kp EXCLAMATION  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN
 &kp DOLLAR   &kp LEFT_ARROW  &kp DOWN       &kp RIGHT  &trans        &kp LC(LA(KP_NUMBER_0))      &kp MINUS  &kp SLASH     &kp QUESTION     &kp LEFT_BRACKET      &kp RIGHT_BRACKET      &kp ENTER
@@ -122,15 +122,15 @@
             >;
         };
 
-        ARROW {
+        mouse {
             bindings = <
-&kp ESCAPE      &kp LC(LS(TAB))         &kp UP_ARROW    &kp LC(TAB)              &trans                       &trans  &trans  &trans  &trans  &trans
-&kp HOME        &kp LEFT_ARROW          &kp DOWN_ARROW  &kp RIGHT_ARROW          &kp END  &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&kp LEFT_SHIFT  &kp LG(LS(LEFT_ARROW))  &trans          &kp LG(LS(RIGHT_ARROW))  &trans   &trans      &trans  &trans  &trans  &trans  &trans  &trans
-&trans          &trans                  &trans          &trans                   &trans   &trans      &trans  &trans                          &trans
+&kp LC(C)  &kp LC(V)  &kp LC(S)  &kp LC(Z)  &kp LC(Y)                                   &mkp MB5             &kp F5     &trans     &kp LS(LC(T))  &to 0
+&kp G      &kp M      &kp B      &kp E      &kp P      &kp Q             &trans         &mkp MB4             &mkp MB1   &mkp MB3   &mkp MB2       &mo 5
+&kp W      &kp I      &kp K      &kp X      &kp C      &kp LEFT_ALT      &to 1          &trans               &kp LC(C)  &kp LC(V)  &trans         &kp ENTER
+&trans     &trans     &trans     &kp R      &kp Q      &kp SPACE         &kp BACKSPACE  &mt LS(LG(S)) SPACE                                       &kp ESCAPE
             >;
 
-            sensor-bindings = <&inc_dec_kp LC(PAGE_UP) LC(PAGE_DOWN)>;
+            sensor-bindings = <&inc_dec_kp N8 N7>;
         };
 
         MOUSE {
