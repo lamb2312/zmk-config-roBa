@@ -89,11 +89,10 @@
             tapping-term-ms = <200>;
         };
 
-        scroll_up_down: behavior_sensor_rotate_mouse_wheel_up_down {
+        inc_dec_mw: behavior_sensor_rotate_mouse_wheel {
             compatible = "zmk,behavior-sensor-rotate";
-            #sensor-binding-cells = <0>;
-            bindings = <&msc SCRL_UP>, <&msc SCRL_DOWN>;
-            tap-ms = <20>;
+            #sensor-binding-cells = <2>;
+            bindings = <&msc>, <&msc>;
         };
     };
 
@@ -108,7 +107,7 @@
 &mt LCTRL TAB   &kp LEFT_WIN  &kp LEFT_SHIFT  &lt_to_layer_0 1 LC(SPACE)  &mo 2  &mo 3              &kp BACKSPACE  &lt 1 SPACE                             &to 3
             >;
 
-            sensor-bindings = <&scroll_up_down>;
+            sensor-bindings = <&inc_dec_mw SCRL_UP SCRL_DOWN>;
         };
 
         FUNCTIONnumber {
@@ -137,7 +136,7 @@
 &trans     &trans     &trans     &kp R      &kp Q      &kp SPACE         &kp BACKSPACE  &mt LS(LG(S)) SPACE                                       &kp ESCAPE
             >;
 
-            sensor-bindings = <&scroll_up_down>;
+            sensor-bindings = <&inc_dec_mw SCRL_UP SCRL_DOWN>;
         };
 
         MOUSE {
