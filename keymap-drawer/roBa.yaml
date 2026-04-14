@@ -1,14 +1,14 @@
 layout: {zmk_keyboard: roBa}
 layers:
   default:
-  - Q
+  - {t: Q, h: LEFT ALT}
   - W
   - E
   - R
   - T
   - Y
   - U
-  - {t: I, h: SCROLL}
+  - I
   - O
   - P
   - A
@@ -22,106 +22,106 @@ layers:
   - J
   - K
   - L
-  - ''''
-  - {t: Z, h: LEFT SHIFT}
+  - ENTER
+  - Z
   - X
   - C
   - V
   - B
-  - ':'
-  - ;
+  - DEL
+  - {t: B, h: '6'}
   - N
   - M
   - ','
   - .
-  - /
-  - LCTRL
+  - '#'
+  - {t: TAB, h: LCTRL}
   - LEFT WIN
-  - LEFT ALT
-  - {t: '&to_layer_0 INT_HENKAN', h: '6'}
-  - {t: SPACE, h: NUM}
-  - {t: '&to_layer_0 INT_MUHENKAN', h: ARROW}
+  - LEFT SHIFT
+  - {t: '&to_layer_0 LC(SPACE)', h: FUNCTIONnumber}
+  - kigou
+  - mouse
   - BACKSPACE
-  - {t: ENTER, h: FUNCTION}
-  - DEL
-  FUNCTION:
+  - {t: SPACE, h: FUNCTIONnumber}
+  - {t: mouse, h: toggle}
+  FUNCTIONnumber:
+  - F9
+  - F10
+  - F11
+  - F12
+  - LEFT ALT
+  - BACKSPACE
+  - KP 7
+  - KP 8
+  - KP 9
+  - KP MINUS
+  - F5
+  - F6
+  - F7
+  - F8
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - KP SLASH
+  - KP DOT
+  - KP 4
+  - KP 5
+  - KP 6
+  - KP PLUS
   - F1
   - F2
   - F3
   - F4
-  - F5
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - F13
-  - F6
-  - F7
-  - F8
-  - F9
-  - F10
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - F11
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - KP MULTIPLY
+  - KP 0
+  - KP 1
+  - KP 2
+  - KP 3
+  - ENTER
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {type: held}
-  - F12
-  NUM:
-  - '-'
-  - KP 7
-  - KP 8
-  - KP 9
-  - +
-  - ^
-  - '&'
-  - '~'
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - LEFT ARROW
+  - RIGHT
+  - {t: ▽, type: trans}
+  kigou:
+  - '#'
+  - {t: ▽, type: trans}
+  - UP ARROW
+  - {t: ▽, type: trans}
+  - LEFT ALT
+  - '='
+  - '!'
   - (
   - )
-  - /
-  - KP 4
-  - KP 5
-  - KP 6
-  - '*'
-  - Ctl+Alt+KP 0
-  - _
-  - '!'
   - '@'
-  - '#'
   - $
-  - '%'
-  - {t: KP 0, h: LEFT SHIFT}
-  - KP 1
-  - KP 2
-  - KP 3
-  - .
-  - '='
+  - LEFT ARROW
+  - DOWN
+  - RIGHT
   - {t: ▽, type: trans}
+  - Ctl+Alt+KP 0
+  - '-'
+  - /
+  - '?'
   - '['
   - ']'
-  - '{'
-  - '}'
+  - ENTER
+  - '%'
+  - ':'
+  - ;
+  - '|'
+  - '~'
+  - '&'
+  - +
+  - '*'
+  - '#'
+  - ','
+  - .
   - \
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -132,50 +132,50 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - '|'
-  ARROW:
+  mouse:
+  - Ctl+C
+  - Ctl+V
+  - Ctl+S
+  - Ctl+Z
+  - Ctl+Y
+  - '&mkp MB5'
+  - F5
+  - {t: ▽, type: trans}
+  - Sft+Ctl+T
+  - {t: default, h: toggle}
+  - G
+  - M
+  - B
+  - E
+  - P
+  - Q
+  - {t: ▽, type: trans}
+  - '&mkp MB4'
+  - '&mkp MB1'
+  - '&mkp MB3'
+  - '&mkp MB2'
+  - SCROLL
+  - W
+  - I
+  - K
+  - X
+  - C
+  - LEFT ALT
+  - {t: FUNCTIONnumber, h: toggle}
+  - {t: ▽, type: trans}
+  - Ctl+C
+  - Ctl+V
+  - {t: ▽, type: trans}
+  - ENTER
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - R
+  - Q
+  - {t: SPACE, type: held}
+  - BACKSPACE
+  - {t: SPACE, h: Sft+Gui+S}
   - ESCAPE
-  - Ctl+Sft+TAB
-  - UP ARROW
-  - Ctl+TAB
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - HOME
-  - LEFT ARROW
-  - DOWN ARROW
-  - RIGHT ARROW
-  - END
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - LEFT SHIFT
-  - Gui+Sft+LEFT ARROW
-  - {t: ▽, type: trans}
-  - Gui+Sft+RIGHT ARROW
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {type: held}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
   MOUSE:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -228,6 +228,20 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -246,21 +260,7 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
-  - {t: ▽, type: trans}
+  - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -293,7 +293,7 @@ layers:
   - '3'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - '&bootloader'
+  - {t: '&bootloader', type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
@@ -302,20 +302,26 @@ layers:
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - {type: held}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - BT CLR ALL
 combos:
-- p: [11, 12]
-  k: TAB
-- p: [12, 13]
-  k: Sft+TAB
-- p: [11, 10]
-  k: '&to_layer_0 INT_MUHENKAN'
+- p: [0, 1]
+  k: ESCAPE
+- p: [18, 19]
+  k: '&mkp MB1'
+- p: [19, 20]
+  k: '&mkp MB2'
+- p: [18, 19, 20]
+  k: '&mkp MB3'
+- p: [5, 7, 6]
+  k: '&mkp MB4'
+- p: [6, 7, 8]
+  k: '&mkp MB5'
+- p: [37, 39]
+  k: {t: default, h: toggle}
 - p: [20, 21]
-  k: '"'
-- p: [24, 25]
-  k: '='
+  k: SCROLL
