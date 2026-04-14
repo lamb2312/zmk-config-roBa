@@ -85,11 +85,11 @@ layers:
   - {type: held}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
-  - LEFT ARROW
-  - RIGHT
+  - {t: ▽, type: trans}
+  - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   kigou:
-  - '#'
+  - \
   - {t: ▽, type: trans}
   - UP ARROW
   - {t: ▽, type: trans}
@@ -101,9 +101,9 @@ layers:
   - '@'
   - $
   - LEFT ARROW
-  - DOWN
-  - RIGHT
-  - {t: ▽, type: trans}
+  - DOWN ARROW
+  - RIGHT ARROW
+  - '~'
   - Ctl+Alt+KP 0
   - '-'
   - /
@@ -114,15 +114,15 @@ layers:
   - '%'
   - ':'
   - ;
-  - '|'
-  - '~'
+  - <
+  - '>'
   - '&'
   - +
   - '*'
   - '#'
   - ','
   - .
-  - \
+  - '#'
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
   - {t: ▽, type: trans}
