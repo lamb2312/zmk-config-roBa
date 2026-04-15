@@ -69,6 +69,11 @@
             bindings = <&mo 5>;
             key-positions = <20 21>;
         };
+
+        to3 {
+            bindings = <&to 3>;
+            key-positions = <29 30 31 32>;
+        };
     };
 
     macros {
