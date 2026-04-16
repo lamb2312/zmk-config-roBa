@@ -129,7 +129,7 @@
 
         kigou {
             bindings = <
-            &kp BACKSLASH  &trans  &kp UP_ARROW  &trans  &kp LEFT_ALT  &kp EQUAL  &kp EXCLAMATION  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN
+            &kp BACKSLASH  &kp UNDERSCORE  &kp UP_ARROW  &trans  &kp LEFT_ALT  &kp EQUAL  &kp EXCLAMATION  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp AT_SIGN
             &kp DOLLAR  &kp LEFT_ARROW  &kp DOWN_ARROW  &kp RIGHT_ARROW  &kp TILDE  &kp LC(LA(KP_NUMBER_0))  &kp MINUS  &kp SLASH  &kp QUESTION  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &kp ENTER
             &kp PERCENT  &kp COLON  &kp SEMICOLON  &kp LESS_THAN  &kp GREATER_THAN  &kp AMPERSAND  &kp PLUS  &kp ASTERISK  &kp HASH  &kp COMMA  &kp PERIOD  &kp HASH
             &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &kp PIPE
