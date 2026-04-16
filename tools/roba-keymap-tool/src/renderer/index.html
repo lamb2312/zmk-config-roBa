@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>roBa Keymap Tool</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- タイトルバードラッグ領域 -->
+  <div class="titlebar">
+    <div class="titlebar-icon">⌨</div>
+    <span class="titlebar-title">roBa Keymap Tool</span>
+    <div class="titlebar-spacer"></div>
+  </div>
+
+  <!-- メインレイアウト -->
+  <div class="app-layout">
+
+    <!-- サイドバー -->
+    <nav class="sidebar">
+      <div class="sidebar-section">
+        <button class="nav-btn active" id="nav-editor" onclick="switchView('editor')">
+          <span class="nav-icon">📐</span>
+          <span>キーマップ</span>
+        </button>
+        <button class="nav-btn" id="nav-combos" onclick="switchView('combos')">
+          <span class="nav-icon">⚡</span>
+          <span>コンボ</span>
+        </button>
+        <button class="nav-btn" id="nav-build" onclick="switchView('build')">
+          <span class="nav-icon">🚀</span>
+          <span>ビルド & フラッシュ</span>
+        </button>
+        <button class="nav-btn" id="nav-settings" onclick="switchView('settings')">
+          <span class="nav-icon">⚙</span>
+          <span>設定</span>
+        </button>
+      </div>
+
+      <!-- レイヤー選択 -->
+      <div class="sidebar-section" id="layer-panel">
+        <div class="sidebar-label">レイヤー</div>
+        <div id="layer-list"></div>
+      </div>
+
+      <!-- ビルドボタン -->
+      <div class="sidebar-bottom">
+        <button class="build-btn" id="build-btn" onclick="startBuildFlow()">
+          <span class="build-btn-icon">🚀</span>
+          <span>ビルド & フラッシュ</span>
+        </button>
+      </div>
+    </nav>
+
+    <!-- メインコンテンツ -->
+    <main class="content">
+
+      <!-- キーマップエディタ -->
+      <section id="view-editor" class="view active">
+        <div class="view-header">
+          <h1 class="view-title">キーマップエディタ</h1>
+          <div class="view-actions">
+            <button class="btn btn-ghost" onclick="reloadKeymap()">🔄 再読み込み</button>
+            <button class="btn btn-primary" onclick="saveKeymap()">💾 保存</button>
+          </div>
+        </div>
+
+        <!-- キーボード描画エリア -->
+        <div class="keyboard-container">
+          <div id="keyboard-canvas" class="keyboard-canvas"></div>
+        </div>
+
+        <!-- 選択中キー情報 -->
+        <div class="key-info-bar" id="key-info-bar">
+          <span class="key-info-pos" id="key-info-pos"></span>
+          <span class="key-info-binding" id="key-info-binding"></span>
+        </div>
+      </section>
+
+      <!-- コンボ設定 -->
+      <section id="view-combos" class="view">
+        <div class="view-header">
+          <h1 class="view-title">コンボ設定</h1>
+          <div class="view-actions">
+            <button class="btn btn-primary" onclick="addCombo()">＋ コンボ追加</button>
+          </div>
+        </div>
+        <div id="combo-list" class="combo-list"></div>
+      </section>
+
+      <!-- ビルド & フラッシュ -->
+      <section id="view-build" class="view">
+        <div class="view-header">
+          <h1 class="view-title">ビルド & フラッシュ</h1>
+        </div>
+
+        <div class="build-layout">
+          <!-- ステップ表示 -->
+          <div class="steps-panel">
+            <div class="step" id="step-git">
+              <div class="step-icon">📤</div>
+              <div class="step-body">
+                <div class="step-title">1. GitHub にプッシュ</div>
+                <div class="step-desc" id="step-git-desc">キーマップの変更をプッシュします</div>
+              </div>
+              <div class="step-status" id="step-git-status"></div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step" id="step-build">
+              <div class="step-icon">🔨</div>
+              <div class="step-body">
+                <div class="step-title">2. GitHub Actions ビルド</div>
+                <div class="step-desc" id="step-build-desc">ファームウェアをビルドします（約3〜5分）</div>
+              </div>
+              <div class="step-status" id="step-build-status"></div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step" id="step-download">
+              <div class="step-icon">⬇</div>
+              <div class="step-body">
+                <div class="step-title">3. UF2 ダウンロード</div>
+                <div class="step-desc" id="step-download-desc">ビルドされた UF2 を取得します</div>
+              </div>
+              <div class="step-status" id="step-download-status"></div>
+            </div>
+            <div class="step-connector"></div>
+            <div class="step" id="step-flash">
+              <div class="step-icon">⚡</div>
+              <div class="step-body">
+                <div class="step-title">4. 自動フラッシュ</div>
+                <div class="step-desc" id="step-flash-desc">キーボードをリセットしてください</div>
+              </div>
+              <div class="step-status" id="step-flash-status"></div>
+            </div>
+          </div>
+
+          <!-- ログパネル -->
+          <div class="log-panel">
+            <div class="log-header">
+              <span>ログ</span>
+              <button class="btn btn-ghost btn-sm" onclick="clearLog()">クリア</button>
+            </div>
+            <div id="build-log" class="log-content"></div>
+          </div>
+        </div>
+
+        <!-- フラッシュ待機 UI -->
+        <div id="flash-waiting" class="flash-waiting hidden">
+          <div class="flash-pulse"></div>
+          <div class="flash-waiting-text" id="flash-waiting-text">
+            キーボードの RST ボタンをダブルタップしてください
+          </div>
+          <div class="flash-waiting-sub">XIAO-SENSE ドライブが出現したら自動でフラッシュします</div>
+        </div>
+
+        <!-- 完了 -->
+        <div id="flash-done" class="flash-done hidden">
+          <div class="flash-done-icon">🎉</div>
+          <div class="flash-done-text">フラッシュ完了！</div>
+          <button class="btn btn-primary" onclick="switchView('editor')">エディタに戻る</button>
+        </div>
+
+      </section>
+
+      <!-- 設定 -->
+      <section id="view-settings" class="view">
+        <div class="view-header">
+          <h1 class="view-title">設定</h1>
+        </div>
+
+        <div class="settings-form">
+          <div class="settings-group">
+            <h2 class="settings-group-title">GitHub 連携</h2>
+
+            <div class="form-field">
+              <label class="form-label">Personal Access Token (PAT)</label>
+              <div class="form-row">
+                <input type="password" id="input-token" class="form-input" placeholder="ghp_xxxxxxxxxxxx" />
+                <button class="btn btn-ghost" onclick="toggleTokenVisibility()">👁</button>
+              </div>
+              <div class="form-hint">
+                <a href="#" onclick="openTokenGuide()">PAT の取得方法</a> —
+                必要なスコープ: <code>repo</code>, <code>actions</code>
+              </div>
+            </div>
+
+            <div class="form-row-2">
+              <div class="form-field">
+                <label class="form-label">リポジトリオーナー</label>
+                <input type="text" id="input-owner" class="form-input" placeholder="username" />
+              </div>
+              <div class="form-field">
+                <label class="form-label">リポジトリ名</label>
+                <input type="text" id="input-repo" class="form-input" placeholder="zmk-config-roBa" />
+              </div>
+            </div>
+
+            <div class="form-field">
+              <label class="form-label">ブランチ</label>
+              <input type="text" id="input-ref" class="form-input" placeholder="main" style="max-width:200px" />
+            </div>
+
+            <div class="form-actions">
+              <button class="btn btn-ghost" id="btn-validate" onclick="validateToken()">🔍 トークン検証</button>
+              <div id="token-status" class="token-status"></div>
+            </div>
+          </div>
+
+          <div class="settings-group">
+            <h2 class="settings-group-title">リポジトリ情報</h2>
+            <div id="repo-info" class="repo-info-box"></div>
+          </div>
+
+          <div class="form-actions-bottom">
+            <button class="btn btn-primary" onclick="saveSettings()">設定を保存</button>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- コンボ編集モーダル -->
+  <div id="combo-editor-overlay" class="modal-overlay hidden" onclick="closeComboEditor(event)">
+    <div class="modal modal-combo" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h2 id="combo-modal-title">コンボを編集</h2>
+        <button class="modal-close" onclick="closeComboEditor()">✕</button>
+      </div>
+
+      <div class="combo-editor-body">
+        <!-- 左: 設定フィールド -->
+        <div class="combo-editor-left">
+
+          <!-- 名前 -->
+          <div class="combo-field">
+            <label class="combo-field-label">コンボ名</label>
+            <input type="text" id="combo-name-input" class="form-input"
+              placeholder="例: esc, mouse1" />
+            <div class="combo-field-hint">英数字とアンダースコアのみ</div>
+          </div>
+
+          <!-- バインディング -->
+          <div class="combo-field">
+            <label class="combo-field-label">バインディング</label>
+            <div class="combo-binding-row">
+              <code id="combo-binding-preview" class="combo-binding-code">未設定</code>
+              <button class="btn btn-ghost btn-sm" onclick="openComboBindingPicker()">✏ 変更</button>
+            </div>
+          </div>
+
+          <!-- タイムアウト (オプション) -->
+          <div class="combo-field">
+            <label class="combo-field-label">タイムアウト <span class="combo-optional">省略可 (ms)</span></label>
+            <input type="number" id="combo-timeout-input" class="form-input"
+              placeholder="省略時はデフォルト (50ms)" min="1" max="1000" style="max-width:180px" />
+          </div>
+
+          <!-- レイヤー限定 (オプション) -->
+          <div class="combo-field">
+            <label class="combo-field-label">レイヤー限定 <span class="combo-optional">省略可</span></label>
+            <div id="combo-layers-chips" class="combo-layers-chips"></div>
+            <div class="combo-field-hint">選択したレイヤーでのみ有効 / 未選択=全レイヤー</div>
+          </div>
+
+          <!-- 選択中キーポジション表示 -->
+          <div class="combo-field">
+            <label class="combo-field-label">選択中のキー
+              <span id="combo-positions-count" class="combo-count-badge">0個</span>
+            </label>
+            <div id="combo-positions-list" class="combo-positions-list">キーを右側のキーボードから選択してください</div>
+          </div>
+
+        </div>
+
+        <!-- 右: キー位置選択キーボード -->
+        <div class="combo-editor-right">
+          <div class="combo-keyboard-header">
+            <span class="combo-keyboard-label">キー位置を選択</span>
+            <button class="btn btn-ghost btn-sm" onclick="clearComboPositions()">クリア</button>
+          </div>
+          <div class="combo-keyboard-wrap">
+            <div id="combo-key-selector" class="combo-key-selector"></div>
+          </div>
+          <div class="combo-keyboard-hint">クリックでトグル · 2個以上選択してください</div>
+        </div>
+      </div>
+
+      <!-- フッター -->
+      <div class="combo-editor-footer">
+        <button class="btn btn-ghost btn-sm" id="combo-delete-btn" onclick="deleteComboEditing()">🗑 削除</button>
+        <div style="flex:1"></div>
+        <button class="btn btn-ghost" onclick="closeComboEditor()">キャンセル</button>
+        <button class="btn btn-primary" id="combo-save-btn" onclick="saveComboEdit()">✔ 保存</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- キー選択モーダル -->
+  <div id="key-picker-overlay" class="modal-overlay hidden" onclick="closeKeyPicker(event)">
+    <div class="modal modal-wide" onclick="event.stopPropagation()">
+      <div class="modal-header">
+        <h2>キーを設定</h2>
+        <div class="modal-pos" id="modal-pos"></div>
+        <!-- プレビュー -->
+        <div class="modal-preview">
+          <span class="modal-preview-label">設定値:</span>
+          <code id="modal-preview-binding"></code>
+        </div>
+        <button class="btn btn-primary btn-sm" id="modal-apply-btn" onclick="applyPickerBinding()">✔ 適用</button>
+        <button class="modal-close" onclick="closeKeyPicker()">✕</button>
+      </div>
+
+      <div class="modal-body">
+        <!-- 左: Behavior 選択 -->
+        <div class="modal-left">
+          <div class="modal-section-title">Behavior</div>
+          <div class="behavior-list" id="behavior-list"></div>
+
+          <!-- カスタム入力 -->
+          <div class="modal-section-title" style="margin-top:12px">直接入力</div>
+          <div class="modal-custom-row">
+            <input type="text" id="modal-custom-input" class="form-input form-input-sm"
+              placeholder="&amp;kp A など" oninput="onCustomInputChange(this.value)" />
+          </div>
+        </div>
+
+        <!-- 右: パラメーター入力エリア -->
+        <div class="modal-right">
+          <!-- Step 1: パラメーター設定 (Behavior によって変わる) -->
+          <div id="picker-params" class="picker-params"></div>
+          <!-- Step 2: キーグリッド (キー選択が必要な場合) -->
+          <div id="picker-key-area" class="picker-key-area hidden">
+            <div class="picker-key-header">
+              <div class="modal-tabs" id="picker-key-tabs"></div>
+            </div>
+            <div id="picker-key-grid" class="modal-key-grid picker-key-grid"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- トースト通知 -->
+  <div id="toast" class="toast hidden"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,31 @@
+{
+  "name": "roba-keymap-tool",
+  "version": "1.0.0",
+  "description": "roBa キーボード キーマップ GUI ツール",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron . --dev",
+    "build": "electron-builder --win portable"
+  },
+  "build": {
+    "appId": "com.lamb2312.robakeymaptool",
+    "productName": "roBa Keymap Tool",
+    "directories": {
+      "output": "release"
+    },
+    "win": {
+      "target": "portable"
+    }
+  },
+  "dependencies": {
+    "@octokit/rest": "^21.1.1",
+    "chokidar": "^4.0.3",
+    "node-disk-info": "^1.3.0",
+    "simple-git": "^3.27.0"
+  },
+  "devDependencies": {
+    "electron": "^34.0.0",
+    "electron-builder": "^26.8.1"
+  }
+}
