@@ -19,9 +19,10 @@ function parseKeymap(content) {
   const normalized = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
 
   // combos { ... }; ブロックを抽出してパース
-  const combosIdx = normalized.indexOf('combos {');
+  const comboSection = normalized.includes('runtime_combo_defaults {') ? 'runtime_combo_defaults' : 'combos';
+  const combosIdx = normalized.indexOf(comboSection + ' {');
   if (combosIdx !== -1) {
-    const combosBlock = extractBlock(normalized, combosIdx + 'combos'.length);
+    const combosBlock = extractBlock(normalized, combosIdx + comboSection.length);
     if (combosBlock) {
       result.combos = parseCombos(combosBlock);
     }
@@ -103,6 +104,12 @@ function parseCombos(block) {
       keyPositions,
       timeoutMs: timeoutMatch ? parseInt(timeoutMatch[1]) : null,
       layers:    layersMatch  ? layersMatch[1].trim().split(/\s+/).map(Number) : null,
+      slot: blockContent.match(/\bslot\s*=\s*<(\d+)>/)?.[1] !== undefined
+        ? Number(blockContent.match(/\bslot\s*=\s*<(\d+)>/)[1]) : undefined,
+      displayName: blockContent.match(/display-name\s*=\s*"([^"]*)"/)?.[1],
+      requirePriorIdleMs: blockContent.match(/require-prior-idle-ms\s*=\s*<(\d+)>/)?.[1] !== undefined
+        ? Number(blockContent.match(/require-prior-idle-ms\s*=\s*<(\d+)>/)[1]) : undefined,
+      slowRelease: /\bslow-release\s*;/.test(blockContent),
     });
   }
   return combos;
@@ -113,10 +120,31 @@ function parseCombos(block) {
  * @param {Array} combos
  * @returns {string}
  */
-function generateCombosBlock(combos) {
-  let block = 'combos {\n        compatible = "zmk,combos";\n';
+function generateCombosBlock(combos, runtime = false) {
+  let block = runtime
+    ? 'runtime_combo_defaults {\n        compatible = "cormoran,runtime-combo-defaults";\n'
+    : 'combos {\n        compatible = "zmk,combos";\n';
+  const slots = new Set();
+  if (runtime) for (const combo of combos) {
+    if (combo.slot === undefined) continue;
+    if (!Number.isInteger(combo.slot) || combo.slot < 0 || combo.slot >= 16 || slots.has(combo.slot)) {
+      throw new Error('コンボのスロットは重複しない 0〜15 の整数で指定してください');
+    }
+    slots.add(combo.slot);
+  }
   for (const combo of combos) {
     block += `\n        ${combo.name} {\n`;
+    if (runtime) {
+      let slot = combo.slot;
+      if (slot === undefined) {
+        slot = 0;
+        while (slots.has(slot)) slot++;
+        if (slot >= 16) throw new Error('コンボは最大16個です');
+        slots.add(slot);
+      }
+      block += `            slot = <${slot}>;\n`;
+      if (combo.displayName) block += `            display-name = ${JSON.stringify(combo.displayName)};\n`;
+    }
     block += `            bindings = <${combo.binding}>;\n`;
     block += `            key-positions = <${combo.keyPositions.join(' ')}>;\n`;
     if (combo.timeoutMs != null) {
@@ -125,6 +153,8 @@ function generateCombosBlock(combos) {
     if (combo.layers && combo.layers.length > 0) {
       block += `            layers = <${combo.layers.join(' ')}>;\n`;
     }
+    if (combo.requirePriorIdleMs != null) block += `            require-prior-idle-ms = <${combo.requirePriorIdleMs}>;\n`;
+    if (combo.slowRelease) block += '            slow-release;\n';
     block += `        };\n`;
   }
   block += '    };';
@@ -216,8 +246,9 @@ function generateKeymap(originalContent, keymapData) {
 
   // 1. コンボブロックを差し替え
   if (keymapData.combos !== undefined) {
-    const newCombosBlock = generateCombosBlock(keymapData.combos);
-    result = replaceSectionBlock(result, 'combos', newCombosBlock);
+    const runtime = result.includes('runtime_combo_defaults {');
+    const newCombosBlock = generateCombosBlock(keymapData.combos, runtime);
+    result = replaceSectionBlock(result, runtime ? 'runtime_combo_defaults' : 'combos', newCombosBlock);
   }
 
   // 2. 各レイヤーの bindings ブロックを差し替え

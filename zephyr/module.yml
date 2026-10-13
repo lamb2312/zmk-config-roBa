@@ -1,4 +1,7 @@
 name: roBa
 build:
+  cmake: drivers/roba-pmw3610
+  kconfig: drivers/roba-pmw3610/Kconfig
   settings:
     board_root: .
+    dts_root: drivers/roba-pmw3610

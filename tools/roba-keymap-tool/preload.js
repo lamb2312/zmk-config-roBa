@@ -7,6 +7,7 @@ contextBridge.exposeInMainWorld('roba', {
   // --- キーマップ ---
   loadKeymap: () => ipcRenderer.invoke('keymap:load'),
   saveKeymap: (keymapData) => ipcRenderer.invoke('keymap:save', keymapData),
+  openDyaStudio: () => ipcRenderer.invoke('studio:openDya'),
 
   // --- 設定 ---
   loadSettings: () => ipcRenderer.invoke('settings:load'),

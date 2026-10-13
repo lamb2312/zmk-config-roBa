@@ -30,6 +30,10 @@
           <span class="nav-icon">⚡</span>
           <span>コンボ</span>
         </button>
+        <button class="nav-btn" id="nav-runtime" onclick="switchView('runtime')">
+          <span class="nav-icon">🔌</span>
+          <span>本体の設定</span>
+        </button>
         <button class="nav-btn" id="nav-build" onclick="switchView('build')">
           <span class="nav-icon">🚀</span>
           <span>ビルド & フラッシュ</span>
@@ -90,6 +94,9 @@
         </div>
         <div id="combo-list" class="combo-list"></div>
       </section>
+
+      <!-- ビルド & フラッシュ -->
+      <section id="view-runtime" class="view"></section>
 
       <!-- ビルド & フラッシュ -->
       <section id="view-build" class="view">
@@ -347,6 +354,7 @@
   <!-- トースト通知 -->
   <div id="toast" class="toast hidden"></div>
 
+  <script src="runtime.bundle.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

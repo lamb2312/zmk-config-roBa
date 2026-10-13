@@ -1386,3 +1386,28 @@ body {
   border-color: var(--red);
 }
 
+/* Direct USB combo editor */
+.runtime-help { color: var(--text-muted); line-height: 1.7; margin: 12px 0; }
+#view-runtime > :not(.view-header) { margin-left: 24px; margin-right: 24px; }
+#view-runtime { padding-bottom: 24px; }
+#view-runtime button:disabled { opacity: .5; cursor: default; }
+.runtime-status { padding: 14px; background: #1e2940; border-radius: 8px; line-height: 1.6; }
+.runtime-error { color: #ffb8b8; background: #40212b; }
+.runtime-controls { border: 0; padding: 0; margin: 0; min-width: 0; }
+.runtime-controls:disabled { opacity: .5; }
+.runtime-toolbar { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; }
+.runtime-grid { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 28px; }
+.runtime-grid .form-label { display: block; margin-top: 14px; }
+.runtime-grid select, .runtime-grid input.form-input { width: 100%; }
+.runtime-grid select option { background: #1c2030; color: #eee; }
+.runtime-check { display: inline-flex; align-items: center; gap: 8px; margin: 12px 14px 0 0; }
+.runtime-keyboard-scroll { overflow-x: auto; padding: 18px 8px; }
+.runtime-keyboard { position: relative; }
+.runtime-key { position: absolute; border: 1px solid #65708a; border-radius: 5px; background: #252b40; color: #eee; cursor: pointer; }
+.runtime-key[aria-pressed="true"] { background: #6854d5; border-color: #c1b7ff; }
+.runtime-key:focus-visible { outline: 2px solid #eee; outline-offset: 2px; }
+.runtime-layers { display: flex; flex-wrap: wrap; }
+@media (max-width: 1150px) { .runtime-grid { grid-template-columns: 1fr; } }
+
+.runtime-controls[hidden] { display: none; }
+#km-keys .runtime-key { font-size: 10px; line-height: 1.15; overflow: hidden; overflow-wrap: anywhere; padding: 2px; }

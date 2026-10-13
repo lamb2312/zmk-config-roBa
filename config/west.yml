@@ -2,15 +2,19 @@ manifest:
   remotes:
     - name: zmkfirmware
       url-base: https://github.com/zmkfirmware
-    - name: kumamuk-git
-      url-base: https://github.com/kumamuk-git
+    - name: cormoran
+      url-base: https://github.com/cormoran
   projects:
     - name: zmk
-      remote: zmkfirmware
-      revision: v0.3-branch
+      remote: cormoran
+      # main+custom-studio-protocol: pin firmware and RPC schema together.
+      revision: 1fc72aaff7a42bd533c1f4c9b3f23c5317c745f4
       import: app/west.yml
-    - name: zmk-pmw3610-driver
-      remote: kumamuk-git
-      revision: main
+    - name: zmk-feature-runtime-combo
+      remote: cormoran
+      revision: d9490e7b5d41c516221d131241009e81740efcee
+    - name: zmk-feature-custom-settings
+      remote: cormoran
+      revision: c6a7fef3a3be3d3ace5de9a4b0628c6418cd1f3f
   self:
     path: config

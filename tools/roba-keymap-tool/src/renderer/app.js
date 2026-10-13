@@ -80,6 +80,7 @@ let pickerTarget = null; // 現在選択中のキーインデックス
 // 初期化
 // ============================================================
 window.addEventListener('DOMContentLoaded', async () => {
+  RobaRuntime.mount(document.getElementById('view-runtime'));
   await loadSettings();
   await loadKeymap();
   setupBuildListeners();
@@ -1231,6 +1232,7 @@ function openComboEditor(idx) {
   state.editingComboIdx = idx;
   const orig = state.combos[idx];
   state.editingCombo = {
+    ...orig,
     name: orig.name,
     binding: orig.binding,
     keyPositions: [...orig.keyPositions],
@@ -1445,6 +1447,7 @@ function saveComboEdit() {
   const timeoutMs  = timeoutVal ? parseInt(timeoutVal) : null;
 
   const saved = {
+    ...state.editingCombo,
     name:         nameInput,
     binding:      state.editingCombo.binding,
     keyPositions: [...state.editingCombo.keyPositions],

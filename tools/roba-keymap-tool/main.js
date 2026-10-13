@@ -1,5 +1,5 @@
 // Electron メインプロセス
-const { app, BrowserWindow, ipcMain, shell, Notification } = require('electron');
+const { app, BrowserWindow, ipcMain, shell, Notification, dialog } = require('electron');
 const path = require('path');
 const fs = require('fs');
 const os = require('os');
@@ -82,7 +82,32 @@ function createWindow() {
     icon: path.join(__dirname, 'assets', 'icon.png'),
   });
 
-  mainWindow.loadFile('src/renderer/index.html');
+  const uiPath = path.join(__dirname, 'src/renderer/index.html');
+  const session = mainWindow.webContents.session;
+  session.setPermissionCheckHandler((contents, permission) =>
+    contents === mainWindow?.webContents && permission === 'serial');
+  session.setPermissionRequestHandler((contents, permission, callback) =>
+    callback(contents === mainWindow?.webContents && permission === 'serial'));
+  session.on('select-serial-port', async (event, ports, contents, callback) => {
+    event.preventDefault();
+    if (contents !== mainWindow?.webContents || ports.length === 0) {
+      callback('');
+      return;
+    }
+    try {
+      const { response } = await dialog.showMessageBox(mainWindow, {
+        type: 'question', title: 'roBaのUSBポートを選択',
+        message: '右側のroBaを接続したポートを選んでください',
+        detail: 'DYA Studioなど、同じポートを使用するアプリは先に切断してください。',
+        buttons: [...ports.map(p => `${p.displayName || p.portName} (${p.portName})`), 'キャンセル'],
+        cancelId: ports.length, defaultId: ports.length, noLink: true,
+      });
+      callback(ports[response]?.portId || '');
+    } catch { callback(''); }
+  });
+  mainWindow.webContents.on('will-navigate', event => event.preventDefault());
+  mainWindow.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));
+  mainWindow.loadFile(uiPath);
 
   if (process.argv.includes('--dev')) {
     mainWindow.webContents.openDevTools();
@@ -100,6 +125,10 @@ ipcMain.handle('keymap:load', async () => {
   const content = fs.readFileSync(KEYMAP_PATH, 'utf8');
   const parsed = parseKeymap(content);
   return { content, parsed };
+});
+
+ipcMain.handle('studio:openDya', async () => {
+  await shell.openExternal('https://studio.dya.cormoran.works/');
 });
 
 // --- キーマップ保存 ---
